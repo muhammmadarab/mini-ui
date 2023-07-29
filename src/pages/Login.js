@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from '../utils/axios';
 
 const Login = () => {
+    const history = useHistory()
+
     const [formData, setFormData] = useState({
         username: '',
         password: '',
@@ -22,7 +25,7 @@ const Login = () => {
             if (!accessToken) return console.log('Invalid Credentials');
 
             localStorage.setItem('accessToken', accessToken);
-            window.location = "/"
+            history.push("/")
 
         } catch (error) {
             console.error(error.response?.data?.error || 'Failed to login');
