@@ -98,7 +98,7 @@ const DetailsUpload = ({
       <div className="flex flex-col">
         <Label htmlFor="tags">Add your vibetags</Label>
 
-        <div class="inline-flex rounded-md mt-2" role="group">
+        <div className="inline-flex rounded-md mt-2" role="group">
           {availableTags.map((tag) => (
             <VibeTagButton
               key={tag}
