@@ -1,6 +1,6 @@
 import React from "react";
 import { BackArrowIcon } from "../../assets/Icons";
-import { UploadNextButton } from "../Buttons";
+import { UploadNextButton } from "../general/Buttons";
 
 const Header = ({ formStep, handleNext, handleBack, formdata }) => {
   return (

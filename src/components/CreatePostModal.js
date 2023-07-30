@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
 import { CloseIcon, PostIcon, StoryIcon, } from '../assets/Icons'
-import { ModalButton } from "./Buttons"
+import { ModalButton } from "./general/Buttons"
 
 const Modal = ({handleClick}) => {
     const history = useHistory()

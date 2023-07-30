@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { SearchIcon, AddPostIcon } from '../assets/Icons'
-import { NavbarActionButton } from "./Buttons"
+import { NavbarActionButton } from "./general/Buttons"
 import Modal from './CreatePostModal'
 
 const Navbar = () => {

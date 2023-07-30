@@ -3,7 +3,7 @@ import Camera from "../components/create-post/Camera";
 import { useHistory } from "react-router-dom";
 import getCroppedImg from "../utils/getCroppedImage";
 import axios from "../utils/axios";
-import Alert from "../components/General/Alert";
+import Alert from "../components/general/Alert";
 import UploadFrom from "../components/create-post/UploadFrom";
 import Header from "../components/create-post/Header";
 import ImageUpload from "../components/create-post/ImageUpload";

@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { AspectRatioIcon } from "../../assets/Icons";
-import { AspectRatioButton } from "../Buttons";
+import { AspectRatioButton } from "../general/Buttons";
 import Cropper from "react-easy-crop";
 
 const ImageUpload = ({ uploadedFileType, setcroppedAreaPixels, fileToBeUploaded, uploadedFile }) => {
