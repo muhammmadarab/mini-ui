@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'http://localhost:5000',
+    // baseURL: 'http://localhost:5000',
+    baseURL: 'http://192.168.1.106:5000',
 });
 
 instance.interceptors.request.use((config) => {
@@ -16,7 +17,7 @@ instance.interceptors.response.use((response) => response,
     async (error) => {
         const originalRequest = error.config;
 
-        if (error.response && error.response.status === 401 && !originalRequest._retry) {
+        if (error.response && error.response.status === 403 && !originalRequest._retry) {
             originalRequest._retry = true;
 
             try {
