@@ -50,22 +50,24 @@ const Login = () => {
           />
         </div>
       )}
-      <div className="max-w-3xl relative mx-auto border border-gray-300 shadow-md p-6 py-4 rounded-2xl bg-gray-50 w-full flex flex-col justify-evenly">
+      <div className="max-w-md relative mx-auto border border-gray-300 shadow-md p-6 py-4 rounded-2xl bg-gray-50 w-full flex flex-col justify-evenly">
         <h3 className="text-2xl mb-4 text-[#0198C6] font-semibold">Login</h3>
         <form onSubmit={handleSubmit}>
-          <Input
-            type="text"
-            id="username"
-            name="username"
-            label="Username or Email"
-            icon={<EmailIcon className="text-[#0198c6]" />}
-            onChange={handleChange}
-            required
-          />
-          <Password onChange={handleChange} required />
-          <SubmitButton>
-            Login
-          </SubmitButton>
+          <div className="grid grid-cols-1 gap-4">
+            <Input
+              type="text"
+              id="username"
+              name="username"
+              label="Username or Email"
+              icon={<EmailIcon className="text-[#0198c6]" />}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="grid grid-cols-1 gap-4">
+            <Password onChange={handleChange} required />
+          </div>
+          <SubmitButton>Login</SubmitButton>
         </form>
         <div className="flex justify-center items-center text-base text-gray-500 mt-4">
           <p className="mr-2">Don't have an account?</p>
