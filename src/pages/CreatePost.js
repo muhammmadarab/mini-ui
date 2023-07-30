@@ -69,7 +69,6 @@ const CreatePost = () => {
     const response = await fetch(blobUrl);
     const blob = await response.blob();
     const extension = blob.type.split("/")[1];
-    console.log(extension);
 
     const file = new File([blob], `uploaded_file.${extension}`, {
       type: blob.type,
