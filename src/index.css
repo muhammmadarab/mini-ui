@@ -9,9 +9,31 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.35rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #0002;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #0198C6;
+  border-radius: 0.25rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #0198C6cc;
 }
