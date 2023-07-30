@@ -2,7 +2,7 @@ import React from 'react'
 
 const Input = ({ type, id, label, icon, className, ...rest }) => {
     return (
-        <div className="mb-4">
+        <div className="mb-2 md:mb-4">
             <label
                 htmlFor={id}
                 className="block mb-2 text-base font-medium text-[#0198C6]"
