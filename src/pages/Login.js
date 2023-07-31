@@ -28,12 +28,13 @@ const Login = () => {
 
     try {
       const response = await axios.post("/api/auth/login", formData);
-      const { accessToken } = response?.data;
+      const { accessToken, userId } = response?.data;
 
       if (!accessToken) return setError("Invalid Credentials");
 
       setError("");
       localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("userId", userId);
       history.push("/");
     } catch (error) {
       setError(error.response?.data?.error || "Failed to login");
