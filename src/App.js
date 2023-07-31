@@ -7,6 +7,7 @@ import UpdatePost from './pages/UpdatePost';
 import PostWall from './pages/PostWall';
 import PrivateRoute from './components/PrivateRoute';
 import SinglePostView from './pages/SinglePostView';
+import ImageFeed from './pages/ImageFeed';
 
 const App = () => {
   return (
@@ -17,7 +18,8 @@ const App = () => {
         <PrivateRoute exact path="/update" component={UpdatePost} />
         <PrivateRoute exact path="/create-post" component={CreatePost} />
         <PrivateRoute exact path="/" component={PostWall} />
-        <PrivateRoute exact path="/view/post/:id" component={SinglePostView} />
+        <PrivateRoute exact path="/view/post/images" component={ImageFeed} />
+        {/* <PrivateRoute exact path="/view/post/:id" component={SinglePostView} /> */}
         {/* <Redirect to="/login" /> */}
       </Switch>
     </Router>
