@@ -1,50 +1,65 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "../utils/axios";
-import Alert from './general/Alert';
-
+import { HeartEmpty, HeartFill } from "../assets/Icons";
 
 const Post = ({ post }) => {
-    const { _id, mediaURL, likes, type } = post;
+  const { _id, mediaURL, likes, type } = post;
 
-    const [isLiked, setIsLiked] = useState(false);
-    const [err, seterr] = useState("")
+  const history = useHistory();
 
-    const backendUrl = process.env.REACT_APP_BACKEND_URL
+  const [isLiked, setIsLiked] = useState(false);
 
-    console.log(backendUrl)
+  const fetchUrl = `${process.env.REACT_APP_BACKEND_URL}/uploads/${mediaURL}`;
 
-    const toggleLike = async () => {
-        try {
-            await axios.post(`/api/post/${_id}/like`, null, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-                },
-            });
+  const toggleLike = async () => {
+    try {
+      const response = await axios.post(`/api/post/${_id}/like`, null, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      });
 
-            setIsLiked((prevIsLiked) => !prevIsLiked);
-        } catch (error) {
-            seterr(error.response?.data?.error || 'An error occurred');
-            console.log(err)
-        }
+      if (response.status === 200) setIsLiked((prevIsLiked) => !prevIsLiked);
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    useEffect(() => {
-        const userId = localStorage.getItem('userId');
-        setIsLiked(likes.includes(userId));
-    }, [likes]);
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    setIsLiked(likes.includes(userId));
+  }, [likes]);
 
-    console.log(post)
+  return (
+    <div className="relative border-2 rounded-lg overflow-hidden h-fit">
+      <button className="absolute bottom-4 right-4 z-50" onClick={toggleLike}>
+        {isLiked ? (
+          <HeartFill className="text-white" />
+        ) : (
+          <HeartEmpty className="text-white" />
+        )}
+      </button>
+      <div
+        className="cursor-pointer"
+        role="button"
+        onClick={() => history.push(`/view/post/${_id}`)}
+      >
+        {type === "photo" ? (
+          <img src={fetchUrl} className="w-full" />
+        ) : (
+          type === "video" && (
+            <video
+              src={fetchUrl}
+              autoPlay={false}
+              className="w-full"
+              controls={false}
+            ></video>
+          )
+        )}
+      </div>
+    </div>
+  );
+};
 
-    return (
-        <Link to={`/view/post/${_id}`}>
-            <div className='container'>
-                {type === "photo" ? <img src={`${backendUrl}/uploads/${mediaURL}`} /> : type === "video" && <video></video>}
-                {/* <div style={{ background: `url(${mediaURL})` }}></div> */}
-                <button className="like" onClick={toggleLike}>{isLiked ? "" : ""}</button>
-            </div>
-        </Link>
-    )
-}
-
-export default Post
+export default Post;
