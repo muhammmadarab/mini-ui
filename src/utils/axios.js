@@ -1,8 +1,8 @@
 import axios from 'axios';
+const backendUrl = process.env.REACT_APP_BACKEND_URL
 
 const instance = axios.create({
-    baseURL: 'http://localhost:5000',
-    // baseURL: 'http://192.168.1.106:5000',
+    baseURL: backendUrl,
 });
 
 instance.interceptors.request.use((config) => {
