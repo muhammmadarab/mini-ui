@@ -67,9 +67,8 @@ const ImagePost = ({ post }) => {
             <div
               className="w-10 h-10 rounded-full border-2 mr-2 bg-center bg-no-repeat bg-cover"
               style={{
-                backgroundImage: `url(${
-                  userDetails?.profilePicture ? userProfileUrl : defaultProfile
-                })`,
+                backgroundImage: `url(${userDetails?.profilePicture ? userProfileUrl : defaultProfile
+                  })`,
               }}
             ></div>
             <div>
@@ -125,9 +124,8 @@ const ImagePost = ({ post }) => {
               <span className="flex mr-1">
                 <img
                   className={`h-8 w-8 rounded-full shadow-sm shadow-[#00000029] mr-1`}
-                  src={`${process.env.REACT_APP_BACKEND_URL}/user/profile/${
-                    likedBy[likedBy.length - 1]?.profilePicture
-                  }`}
+                  src={`${process.env.REACT_APP_BACKEND_URL}/user/profile/${likedBy[likedBy.length - 1]?.profilePicture
+                    }`}
                 />
               </span>
               <span className="text-sm text-[#707070]">
@@ -142,9 +140,7 @@ const ImagePost = ({ post }) => {
           )}
 
           <p
-            className={`text-[#707070] text-sm overflow-hidden text-ellipsis h-11 items-center ${
-              description ? "italic" : "not-italic"
-            }`}
+            className={`text-[#707070] text-sm overflow-hidden text-ellipsis h-11 items-center`}
             style={{
               WebkitLineClamp: 2,
               WebkitBoxOrient: "vertical",

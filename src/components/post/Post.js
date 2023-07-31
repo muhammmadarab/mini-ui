@@ -47,7 +47,7 @@ const Post = ({ post }) => {
           history.push(
             type === "photo"
               ? "/view/post/images"
-              : type === "video" && "/view/post/videos"
+              : type === "video" && `/view/post/videos/${_id}`
           )
         }
       >

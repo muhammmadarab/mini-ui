@@ -375,9 +375,22 @@ const MenuDotIcon = ({ ...rest }) => (
     viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
     fill="currentColor"
-    { ...rest }
+    {...rest}
   >
     <path d="m16.5 11.995c0-1.242 1.008-2.25 2.25-2.25s2.25 1.008 2.25 2.25-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25zm-6.75 0c0-1.242 1.008-2.25 2.25-2.25s2.25 1.008 2.25 2.25-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25zm-6.75 0c0-1.242 1.008-2.25 2.25-2.25s2.25 1.008 2.25 2.25-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25z" />
+  </svg>
+);
+
+const ShareIcon = ({ ...rest }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    { ...rest }
+  >
+    <path d="M16 15v4l8-8.035-8-7.965v4s-13.277 2.144-16 14c5.796-6.206 16-6 16-6z" />
   </svg>
 );
 
@@ -399,5 +412,6 @@ export {
   PwdIcon,
   HeartEmpty,
   HeartFill,
-  MenuDotIcon
+  MenuDotIcon,
+  ShareIcon,
 };
