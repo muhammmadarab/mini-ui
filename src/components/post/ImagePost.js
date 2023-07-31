@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../utils/axios";
 import { HeartEmpty, HeartFill, MenuDotIcon } from "../../assets/Icons";
-import { fetchPostById, fetchUserById } from "../../utils/api";
+import { fetchPostById, fetchUserById, deletePostById } from "../../utils/api";
 import { PostMenuOptionButton } from "../general/Buttons";
 import DeletePostModal from "./DeletePostModal";
 
@@ -10,18 +10,13 @@ const defaultProfile = `https://avatarairlines.com/wp-content/uploads/2020/05/Ma
 const ImagePost = ({ post }) => {
   const { _id, description, location, mediaURL, likes, userId } = post;
 
-  const loggedUserId = localStorage.getItem("userId");
-
   const [isLiked, setIsLiked] = useState(false);
   const [likedBy, setLikedBy] = useState([]);
   const [userDetails, setUserDetails] = useState(null);
   const [isMenuOpen, setisMenuOpen] = useState(false);
   const [displayModal, setdisplayModal] = useState(false);
 
-  const handleToggle = () => {
-    setdisplayModal(!displayModal);
-  };
-
+  const loggedUserId = localStorage.getItem("userId");
   const fetchMediaUrl = `${process.env.REACT_APP_BACKEND_URL}/uploads/${mediaURL}`;
   const userProfileUrl = `${process.env.REACT_APP_BACKEND_URL}/user/profile/${userDetails?.profilePicture}`;
 
@@ -39,8 +34,12 @@ const ImagePost = ({ post }) => {
     }
   };
 
+  const handleToggleModal = () => setdisplayModal(!displayModal);
   const toggleMenu = () => setisMenuOpen(!isMenuOpen);
-  const handleDelete = () => setisMenuOpen(!isMenuOpen);
+  const handleDeletePost = async () => {
+    const response = await deletePostById(_id);
+    window.location.reload();
+  };
 
   useEffect(() => {
     setIsLiked(likes.includes(loggedUserId));
@@ -58,8 +57,8 @@ const ImagePost = ({ post }) => {
     <>
       {displayModal && (
         <DeletePostModal
-          toggleModal={handleToggle}
-          handleDelete={handleDelete}
+          handleToggleModal={handleToggleModal}
+          handleDeletePost={handleDeletePost}
         />
       )}
       <div className="max-w-md aspect-square mx-auto my-4 rounded-3xl overflow-hidden shadow-lg border">
@@ -89,7 +88,10 @@ const ImagePost = ({ post }) => {
                 <div className="absolute right-0 top-6 z-10">
                   <div className="w-32 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg">
                     <PostMenuOptionButton>Edit Post</PostMenuOptionButton>
-                    <PostMenuOptionButton className="text-red-600 border-b-0" onClick={handleToggle}>
+                    <PostMenuOptionButton
+                      className="text-red-600 border-b-0"
+                      onClick={handleToggleModal}
+                    >
                       Delete Post
                     </PostMenuOptionButton>
                   </div>
@@ -100,7 +102,7 @@ const ImagePost = ({ post }) => {
         </div>
         <div className="relative h-[60%]">
           <button
-            className="absolute bottom-2 right-2 z-50 text-white"
+            className="absolute bottom-2 right-2 z-10 text-white"
             onClick={toggleLike}
           >
             {isLiked ? (

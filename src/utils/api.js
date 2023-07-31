@@ -29,3 +29,13 @@ export const fetchUserById = async (userId) => {
         return [];
     }
 };
+
+export const deletePostById = async (postId) => {
+    try {
+        const response = await axios.delete(`/api/post/delete/${postId}`);
+        return response.data;
+    } catch (error) {
+        console.error('Failed to delete post:', error);
+        return []
+    }
+};
