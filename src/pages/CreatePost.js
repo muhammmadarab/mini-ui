@@ -103,7 +103,7 @@ const CreatePost = () => {
         history.push("/");
       }, 5000);
     } catch (error) {
-      console.error(error.response.data.error);
+      displayAlert(error.response?.data?.error)
     }
   };
 
