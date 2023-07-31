@@ -1,70 +1,104 @@
-# Getting Started with Create React App
+# Mini Social Media App - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the frontend repository of Mini Social Media App built using Reatt.js and Tailwindcss. The app provides user authentication, post management, and file upload capabilities.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+- [Setup](#setup)
+- [Folder Structure](#folder-structure)
+- [How To Use](#how-to-use)
+- [Deployment](#deployment)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The frontend of the Social Media App provides a user-friendly interface to interact with the backend API. It allows users to sign up, log in, create posts, view posts, and upload profile pictures. The app uses JSON Web Tokens (JWT) for authentication, ensuring secure access to user accounts and protecting sensitive data.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- `User Registration and Authentication:` Users can create accounts and login securely using JWT authentication.
+- `Post Management:` Users can create, edit, and delete their posts.
+- `File Upload:` Users can upload images and other files to attach to their posts.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
 
-### `npm run build`
+The frontend of the Social Media App is built using the following technologies:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `React.js:` Frontend library for building user interfaces.
+- `React Router:` For handling client-side routing and navigation within the app.
+- `Axios:` For making HTTP requests to the backend API.
+- `Tailwind CSS:` A utility-first CSS framework for styling the components.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To get started with the Social Media App frontend, follow the steps below:
 
-### `npm run eject`
+## Setup
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Clone the repository:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+git clone https://github.com/muhammmad/mini-ui.git
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Change directory to the project folder:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+cd mini-ui
+```
 
-## Learn More
+3. Install the dependencies:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Create a `.env` file in the root of the project and set the backend API URL.
 
-### Code Splitting
+```bash
+REACT_APP_BACKEND_API_URL=http://localhost:5000/api
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+5. Start the development server.
 
-### Analyzing the Bundle Size
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Folder Structure
 
-### Making a Progressive Web App
+The frontend codebase contains:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- `src/`
+  - `assets/:` For storing icons and other static files.
+  - `components/:` Reusable UI components used throughout the app.
+  - `pages/:` Top-level pages or screens of the app.
+  - `utils/:` Utility functions and helpers.
+  - `App.js:` Main component where routing is defined.
+  - `index.js:` Entry point of the app.
 
-### Advanced Configuration
+## How to Use
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- `Register:` Create a new account by providing a username, email, password, and profile picture.
+- `Login:` Existing users can log in using their username/email and password.
+- `Create Post:` Authenticated users can create a new post by providing a location, description, vibetag and uploading an image/file.
+- `Edit/Delete Post:` Users can edit or delete their own posts.
 
-### Deployment
+## Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+To deploy the frontend of the Social Media App, you can follow these steps:
 
-### `npm run build` fails to minify
+1. Build the production version of the app:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+npm run build
+```
+
+2. Deploy the app to your preferred hosting platform.
+
+## Conclusion
+
+The Mini Social Media App frontend provides a user-friendly interface to interact with the backend API, allowing users to sign up, log in, create posts, view posts, and upload profile pictures. JSON Web Tokens (JWT) are used for secure authentication, ensuring user data is protected. The app is built with React.js, React Router, Axios, and styled with Tailwind CSS.
