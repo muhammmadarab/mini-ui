@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { SearchIcon, AddPostIcon } from '../assets/Icons'
 import { NavbarActionButton } from "./general/Buttons"
-import Modal from './CreatePostModal'
+import Modal from './create-post/CreatePostModal'
 
 const Navbar = () => {
   const [showModal, setshowModal] = useState(false)

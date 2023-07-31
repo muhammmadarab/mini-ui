@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { CloseIcon, PostIcon, StoryIcon } from "../assets/Icons";
-import { ModalButton } from "./general/Buttons";
-import Alert from "./general/Alert";
+import { CloseIcon, PostIcon, StoryIcon } from "../../assets/Icons";
+import { ModalButton } from "../general/Buttons";
+import Alert from "../general/Alert";
 
 const Modal = ({ handleClick }) => {
   const history = useHistory();
@@ -16,7 +16,6 @@ const Modal = ({ handleClick }) => {
   return (
     <div
       id="popup-modal"
-    //   tabIndex="-1"
       className="fixed top-0 left-0 right-0 z-50 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-[#fff7]"
     >
       {error && (
