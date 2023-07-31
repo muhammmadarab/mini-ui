@@ -33,7 +33,7 @@ const Post = ({ post }) => {
 
   return (
     <div className="relative border-2 rounded-lg overflow-hidden h-fit">
-      <button className="absolute bottom-4 right-4 z-50" onClick={toggleLike}>
+      <button className="absolute bottom-4 right-4 z-10" onClick={toggleLike}>
         {isLiked ? (
           <HeartFill className="text-red-600" />
         ) : (
