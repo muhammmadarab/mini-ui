@@ -38,4 +38,14 @@ const AspectRatioButton = ({ children, className, ...rest }) => (
   </button>
 );
 
-export { NavbarActionButton, ModalButton, UploadNextButton, AspectRatioButton };
+const PostMenuOptionButton = ({ children, className, ...rest }) => (
+  <button
+    type="button"
+    {...rest}
+    className={`w-full px-4 py-2 font-medium text-left border-b border-gray-200 cursor-pointer hover:opacity-75 focus:outline-none focus:ring-0 ${className}`}
+  >
+    {children}
+  </button>
+)
+
+export { NavbarActionButton, ModalButton, UploadNextButton, AspectRatioButton, PostMenuOptionButton };

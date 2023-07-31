@@ -19,3 +19,13 @@ export const fetchPostById = async (postId) => {
         return [];
     }
 };
+
+export const fetchUserById = async (userId) => {
+    try {
+        const response = await axios.get(`/api/user/${userId}`);
+        return response.data;
+    } catch (error) {
+        console.error('Failed to fetch posts:', error);
+        return [];
+    }
+};

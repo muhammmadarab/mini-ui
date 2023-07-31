@@ -5,16 +5,14 @@ import { fetchPostById } from '../utils/api';
 const SinglePostView = () => {
   const { id } = useParams();
   const [post, setPost] = useState(null);
-  const [err, seterr] = useState("");
 
   useEffect(() => {
     const fetchPostData = async () => {
       try {
         const postData = await fetchPostById(id);
         setPost(postData.post);
-        // console.log(postData.post)
       } catch (error) {
-        seterr(error)
+        console.log(error)
       }
     };
 
@@ -25,8 +23,7 @@ const SinglePostView = () => {
 
   return (
     <div>
-      ID: {id}
-      <iframe src={`http://localhost:5000/uploads/${post?.mediaURL}`} frameborder="0"></iframe>
+      
     </div>
   )
 }
