@@ -46,7 +46,7 @@ const Post = ({ post }) => {
         onClick={() =>
           history.push(
             type === "photo"
-              ? "/view/post/images"
+              ? `/view/post/images/${_id}`
               : type === "video" && `/view/post/videos/${_id}`
           )
         }

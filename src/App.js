@@ -19,7 +19,7 @@ const App = () => {
         <PrivateRoute exact path="/update" component={UpdatePost} />
         <PrivateRoute exact path="/create-post" component={CreatePost} />
         <PrivateRoute exact path="/" component={PostWall} />
-        <PrivateRoute exact path="/view/post/images" component={ImageFeed} />
+        <PrivateRoute exact path="/view/post/images/:id" component={ImageFeed} />
         <PrivateRoute exact path="/view/post/videos/:id" component={VideoFeed} />
         {/* <Redirect to="/login" /> */}
       </Switch>
