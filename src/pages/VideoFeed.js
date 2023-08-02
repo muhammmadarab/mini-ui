@@ -15,8 +15,6 @@ const VideoFeed = () => {
             setVideoPosts(allPosts?.posts.filter((post) => post.type === "video"));
         };
 
-        console.log();
-
         fetchPosts();
     }, []);
 
