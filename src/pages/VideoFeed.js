@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 const VideoFeed = () => {
     const [videoPosts, setVideoPosts] = useState([]);
-    const [firstVideo, setFirstVideo] = useState(null);
+    const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
     const { id } = useParams();
 
@@ -15,6 +15,8 @@ const VideoFeed = () => {
             setVideoPosts(allPosts?.posts.filter((post) => post.type === "video"));
         };
 
+        console.log();
+
         fetchPosts();
     }, []);
 
@@ -22,26 +24,30 @@ const VideoFeed = () => {
         if (id) {
             const fetchFirstVideo = async () => {
                 const response = await fetchPostById(id);
-                setFirstVideo(response.post);
+                const startingIndex = videoPosts.findIndex((post) => post._id === id);
+                setCurrentVideoIndex(startingIndex !== -1 ? startingIndex : 0);
             };
 
             fetchFirstVideo();
         }
-    }, [id]);
+    }, [id, videoPosts]);
 
-    const startingVideoIndex = videoPosts.findIndex((post) => post._id === id);
+    const handleScroll = (e) => {
+        if (e.deltaY > 0) {
+            setCurrentVideoIndex(currentVideoIndex < videoPosts.length - 1 ? currentVideoIndex + 1 : currentVideoIndex);
+        } else if (e.deltaY < 0) {
+            setCurrentVideoIndex(currentVideoIndex > 0 ? currentVideoIndex - 1 : 0);
+        }
+    };
+
 
     return (
-        <div className="grid gap-1 h-screen overflow-y-scroll overflow-x-hidden items-center mb-10 max-w-md mx-auto">
-            {firstVideo && (
-                <VideoPost post={firstVideo} isCurrent={startingVideoIndex === -1} />
+        <div className="h-screen overflow-hidden" onWheel={handleScroll}>
+            {videoPosts.length > 0 && (
+                <VideoPost
+                    post={videoPosts[currentVideoIndex]}
+                />
             )}
-            {videoPosts
-                .filter((post) => post._id !== id)
-                .map((post) => (
-                    <VideoPost key={post._id} post={post} />
-                ))}
-            <p className="text-gray-500 text-center italic text-lg">End</p>
         </div>
     );
 };

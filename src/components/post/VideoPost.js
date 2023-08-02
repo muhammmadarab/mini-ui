@@ -1,12 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "../../utils/axios";
-import { HeartEmpty, HeartFill, ShareIcon } from "../../assets/Icons";
+import { BackArrowIcon, HeartEmpty, HeartFill, ShareIcon } from "../../assets/Icons";
 import { fetchUserById } from "../../utils/api";
+import { useHistory } from "react-router-dom";
 
 const defaultProfile = `https://avatarairlines.com/wp-content/uploads/2020/05/Male-placeholder.jpeg`;
 
 const VideoPost = ({ post }) => {
   const { _id, description, location, mediaURL, likes, userId } = post;
+  const history = useHistory()
 
   const videoRef = useRef(null);
   const [isLiked, setIsLiked] = useState(false);
@@ -44,37 +46,42 @@ const VideoPost = ({ post }) => {
   }, []);
 
   return (
-    <div className="relative h-screen max-w-md w-full" style={{ aspectRatio: 9 / 16 }}>
-      <div className="w-full h-full">
-        <video
-          ref={videoRef}
-          src={fetchMediaUrl}
-          className="w-full h-full object-cover"
-          onClick={handleVideoClick}
-          autoPlay={true}
-          controls={false}
-        />
-        <div className="absolute bottom-24 right-2 z-10 flex flex-col">
-          <button className="mb-4" onClick={toggleLike}>
-            {isLiked ? (
-              <HeartFill className="text-red-600" />
-            ) : (
-              <HeartEmpty className="text-white" />
-            )}
-          </button>
-          <button className="text-white">
-            <ShareIcon />
-          </button>
-        </div>
+    <div
+      className={`relative h-screen max-w-md w-full mx-auto animate-slideUp`}
+      style={{ aspectRatio: 9 / 16 }}
+    >
+      <div>
+        <button onClick={() => history.push("/")} className="absolute z-10 top-6 left-4">
+          <BackArrowIcon className="w-8 h-4 text-white" fill="currentColor" />
+        </button>
+      </div>
+      <video
+        ref={videoRef}
+        src={fetchMediaUrl}
+        className="w-full h-full object-fill"
+        onClick={handleVideoClick}
+        autoPlay={true}
+        controls={false}
+      />
+      <div className="absolute bottom-24 right-2 z-10 flex flex-col">
+        <button className="mb-4" onClick={toggleLike}>
+          {isLiked ? (
+            <HeartFill className="text-red-600" />
+          ) : (
+            <HeartEmpty className="text-white" />
+          )}
+        </button>
+        <button className="text-white">
+          <ShareIcon />
+        </button>
       </div>
       <div className="absolute bottom-2 left-2 text-white">
         <div className="flex items-center">
           <div
             className="w-10 h-10 rounded-full border-2 mr-2 bg-center bg-no-repeat bg-cover"
             style={{
-              backgroundImage: `url(${
-                userDetails?.profilePicture ? userProfileUrl : defaultProfile
-              })`,
+              backgroundImage: `url(${userDetails?.profilePicture ? userProfileUrl : defaultProfile
+                })`,
             }}
           ></div>
           <div>
@@ -102,3 +109,4 @@ const VideoPost = ({ post }) => {
 };
 
 export default VideoPost;
+

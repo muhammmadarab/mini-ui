@@ -37,3 +37,20 @@ code {
 ::-webkit-scrollbar-thumb:hover {
   background: #0198C6cc;
 }
+
+/* Add this CSS code to your component's CSS (or SCSS) file */
+@keyframes slideUp {
+  0% {
+    /* transform: translateY(100%); */
+    opacity: 0;
+  }
+  100% {
+    /* transform: translateY(0); */
+    opacity: 1;
+  }
+}
+
+.animate-slideUp {
+  animation: slideUp 1s ease-in-out;
+}
+
